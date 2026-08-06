@@ -4,6 +4,20 @@ import {
   X, ChevronDown, Check, ChevronLeft, ChevronRight, FileText, Send, Smile, Image as ImageIcon
 } from 'lucide-react';
 
+// Splits caption on \n and inserts real <br /> line breaks
+function CaptionText({ text }) {
+  if (!text) return null;
+  return (
+    <>
+      {text.split('\n').map((line, i, arr) => (
+        <React.Fragment key={i}>
+          {line}{i < arr.length - 1 && <br />}
+        </React.Fragment>
+      ))}
+    </>
+  );
+}
+
 const CATEGORIES = [
   'Certificates',
   'Hardware & Software',
@@ -21,7 +35,7 @@ const ALL_POSTS = [
     author: 'Carl Janus Bacolod',
     avatar: '/profile_picture/profilepicture.jpg',
     time: 'August 8, 2026 · 🌐',
-    caption: '🚀 My portfolio website is now live!\n While the site is fully accessible, it is still under active development as I continue refining the design, adding new projects, improving features, and enhancing the overall user experience. Major updates are expected to be completed by August 10, 2026. Thank you for taking the time to visit my portfolio. I truly appreciate your support, and if you have any feedback or suggestions, I\'d love to hear them!',
+    caption: '🚀 My portfolio website is now live!\n\nWhile the site is fully accessible, it is still under active development as I continue refining the design, adding new projects, improving features, and enhancing the overall user experience. Major updates are expected to be completed by August 10, 2026.\n\nThank you for taking the time to visit my portfolio. I truly appreciate your support, and if you have any feedback or suggestions, I\'d love to hear them!',
     image: 'https://plus.unsplash.com/premium_photo-1722069799821-860b3129d252?q=80&w=1636&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     tags: ['under development', 'portfolio'],
     likes: 219,
@@ -432,7 +446,7 @@ export default function AllTab() {
 
             {/* Post Caption */}
             <div className="fb-post-caption">
-              <p>{post.caption}</p>
+              <p><CaptionText text={post.caption} /></p>
               <div className="post-tags-row">
                 {post.tags.map(tag => (
                   <span key={tag} className="tag-badge">#{tag}</span>
@@ -552,7 +566,7 @@ export default function AllTab() {
 
               {/* Caption Text & Tags */}
               <div className="viewer-caption-area">
-                <p>{post.caption}</p>
+                <p><CaptionText text={post.caption} /></p>
                 <div className="post-tags-row" style={{ marginTop: '8px' }}>
                   {post.tags.map(tag => (
                     <span key={tag} className="tag-badge dark">#{tag}</span>
