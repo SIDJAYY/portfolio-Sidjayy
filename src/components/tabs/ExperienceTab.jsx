@@ -4,7 +4,7 @@ import { Briefcase, Calendar, MapPin, CheckCircle2 } from 'lucide-react';
 const EXPERIENCES = [
   {
     id: 1,
-    role: 'IT SPECIALIST INTERN',
+    role: 'IT SPECIALIST',
     company: 'Primetech Oil Incorporated',
     period: 'October 2025 - April 2026 (6 months)',
     location: '35 Sto. Nino, Quezon City, Metro Manila',
