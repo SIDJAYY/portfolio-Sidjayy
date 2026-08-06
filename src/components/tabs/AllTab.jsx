@@ -13,6 +13,25 @@ const CATEGORIES = [
 ];
 
 const ALL_POSTS = [
+
+  {
+    id: 3,
+    year: 2026,
+    category: 'none',
+    author: 'Carl Janus Bacolod',
+    avatar: '/profile_picture/profilepicture.jpg',
+    time: 'August 8, 2026 · 🌐',
+    caption: '🚀 My portfolio website is now live!\n While the site is fully accessible, it is still under active development as I continue refining the design, adding new projects, improving features, and enhancing the overall user experience. Major updates are expected to be completed by August 10, 2026. Thank you for taking the time to visit my portfolio. I truly appreciate your support, and if you have any feedback or suggestions, I\'d love to hear them!',
+    image: 'https://plus.unsplash.com/premium_photo-1722069799821-860b3129d252?q=80&w=1636&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    tags: ['under development', 'portfolio'],
+    likes: 219,
+    comments: [
+      { id: 201, author: 'David Kim', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80', text: 'The dark theme palette looks top tier!', time: '2h ago' }
+    ],
+    shares: 19,
+    isLiked: true,
+    github: 'https://github.com',
+  },
   {
     id: 1,
     year: 2026,
@@ -55,24 +74,7 @@ const ALL_POSTS = [
     isLiked: false,
     github: 'https://github.com',
   },
-  // {
-  //   id: 3,
-  //   year: 2026,
-  //   category: 'Web Development',
-  //   author: 'Carl Janus Bacolod',
-  //   avatar: '/profile_picture/profilepicture.jpg',
-  //   time: 'Yesterday at 3:45 PM · 🌐',
-  //   caption: '🎨 Designed and shipped a futuristic E-Commerce & Systems Interface with sleek dark mode aesthetics, micro-animations, and instant search indexing. Loved working with custom CSS design tokens!',
-  //   image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80',
-  //   tags: ['Systems Design', 'CSS Architecture', 'UI/UX', 'Performance'],
-  //   likes: 219,
-  //   comments: [
-  //     { id: 201, author: 'David Kim', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80', text: 'The dark theme palette looks top tier!', time: '2h ago' }
-  //   ],
-  //   shares: 19,
-  //   isLiked: true,
-  //   github: 'https://github.com',
-  // },
+
   // {
   //   id: 4,
   //   year: 2025,

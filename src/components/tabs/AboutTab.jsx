@@ -51,7 +51,7 @@ export default function AboutTab() {
         </div>
 
         {/* Core Principles */}
-        <div className="about-box">
+        {/* <div className="about-box">
           <div className="about-box-title">
             <ShieldCheck size={18} color="#FCA311" />
             <span>Engineering Principles</span>
@@ -62,10 +62,10 @@ export default function AboutTab() {
             <div>• Performance & SEO Best Practices</div>
             <div>• Continuous Integration & Automated Tests</div>
           </div>
-        </div>
+        </div> */}
 
         {/* Interests & Hobbies */}
-        <div className="about-box">
+        {/* <div className="about-box">
           <div className="about-box-title">
             <Heart size={18} color="#FCA311" />
             <span>Interests & Hobbies</span>
@@ -76,7 +76,7 @@ export default function AboutTab() {
             <div>• Mechanical Keyboards & Setup Aesthetic</div>
             <div>• Anime & Indie Gaming</div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
