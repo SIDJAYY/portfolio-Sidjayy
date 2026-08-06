@@ -5,6 +5,7 @@ import AllTab from './components/tabs/AllTab.jsx';
 import AboutTab from './components/tabs/AboutTab.jsx';
 import ExperienceTab from './components/tabs/ExperienceTab.jsx';
 import SkillsTab from './components/tabs/SkillsTab.jsx';
+import CertificationsTab from './components/tabs/CertificationsTab.jsx';
 import MessengerWidget from './components/MessengerWidget.jsx';
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
             {activeTab === 'ABOUT' && <AboutTab />}
             {activeTab === 'EXPERIENCE' && <ExperienceTab />}
             {activeTab === 'SKILLS' && <SkillsTab />}
+            {activeTab === 'CERTIFICATIONS' && <CertificationsTab />}
           </section>
         </div>
       </main>

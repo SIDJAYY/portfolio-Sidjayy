@@ -120,7 +120,7 @@ export default function ProfileHeader({ activeTab, setActiveTab }) {
         </div>
       </div>
 
-      {/* Tabs Navigation Bar: ALL, ABOUT, EXPERIENCE, SKILLS */}
+      {/* Tabs Navigation Bar: ALL, ABOUT, EXPERIENCE, SKILLS, CERTIFICATIONS */}
       <div className="profile-tabs-bar">
         <button
           className={`profile-tab-button ${activeTab === 'ALL' ? 'active' : ''}`}
@@ -145,6 +145,12 @@ export default function ProfileHeader({ activeTab, setActiveTab }) {
           onClick={() => setActiveTab('SKILLS')}
         >
           SKILLS
+        </button>
+        <button
+          className={`profile-tab-button ${activeTab === 'CERTIFICATIONS' ? 'active' : ''}`}
+          onClick={() => setActiveTab('CERTIFICATIONS')}
+        >
+          CERTIFICATIONS
         </button>
       </div>
     </div>
