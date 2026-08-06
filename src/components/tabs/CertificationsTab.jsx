@@ -9,20 +9,31 @@ const CERTIFICATIONS = [
     issuerLogo: null,
     date: 'March 21, 2025',
     category: 'Data & Analytics',
-    description: 'Completed 8 hands-on courses covering data preparation, processing, analysis, and visualization using spreadsheets, SQL, Tableau, and R.',
-    courses: [
-      'Foundations: Data, Data, Everywhere',
-      'Ask Questions to Make Data-Driven Decisions',
-      'Prepare Data for Exploration',
-      'Process Data from Dirty to Clean',
-      'Analyze Data to Answer Questions',
-      'Share Data Through the Art of Visualization',
-      'Data Analysis with R Programming',
-      'Google Data Analytics Capstone',
-    ],
     verifyUrl: 'https://coursera.org/verify/professional-cert/55XT357QQON6',
     image: '/certificates/GDA.png',
     badge: '8 Courses',
+  },
+  {
+    id: 2,
+    title: 'Data Analytics and Visualization Job Simulation',
+    issuer: 'Job Simulation by Forage',
+    issuerLogo: null,
+    date: 'April 1, 2025',
+    category: 'Data & Analytics',
+    verifyUrl: '',
+    image: '/certificates/ACN.png',
+    badge: '4 Modules',
+  },
+  {
+    id: 3,
+    title: 'Google Business Intelligence',
+    issuer: 'Google / Coursera',
+    issuerLogo: null,
+    date: 'March 23, 2025',
+    category: 'Data & Analytics',
+    verifyUrl: 'https://coursera.org/verify/professional-cert/93CFFHJX7X1I',
+    image: '/certificates/GBA.png',
+    badge: '3 Courses',
   },
 ];
 
@@ -132,22 +143,6 @@ export default function CertificationsTab() {
 
             {/* Actions */}
             <div className="cert-actions-row">
-              <a
-                href={cert.verifyUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="cert-verify-btn"
-              >
-                <CheckCircle2 size={14} />
-                Verify Credential
-              </a>
-              <button
-                className="cert-preview-btn"
-                onClick={() => setLightboxCert(cert)}
-              >
-                <ExternalLink size={14} />
-                View Full Certificate
-              </button>
             </div>
           </div>
         </div>

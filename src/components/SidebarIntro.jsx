@@ -71,10 +71,24 @@ export default function SidebarIntro({ setActiveTab }) {
         </div>
       </div>
 
-      <button className="btn-sidebar-full" style={{ background: '#14213D', color: '#FCA311', marginTop: '12px' }}>
+      <a
+        href="/certificates/Carl_Janus_Bacolod_Resume.pdf"
+        download
+        className="btn-sidebar-full"
+        style={{
+          background: '#14213D',
+          color: '#FCA311',
+          marginTop: '12px',
+          textDecoration: 'none',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer'
+        }}
+      >
         <Heart size={16} color="#FCA311" />
         Download Resume (PDF)
-      </button>
+      </a>
     </div>
   );
 }
