@@ -18,11 +18,51 @@ export default function AboutTab() {
             <Mail size={18} color="#FCA311" />
             <span>Contact Information</span>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '14px', color: '#334155' }}>
-            <div><strong>Email:</strong> bacolodcarl00@gmail.com</div>
-            <div><strong>Viber:</strong> 09625581195</div>
-            <div><strong>LinkedIn:</strong> Carl Janus Bacolod</div>
-            <div><strong>Location:</strong> Quezon City, Philippines</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', color: '#334155' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <strong>Email:</strong>
+              <a
+                href="mailto:bacolodcarl00@gmail.com"
+                className="contact-link-item"
+                title="Send an email to Carl"
+              >
+                bacolodcarl00@gmail.com
+              </a>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <strong>Viber / Phone:</strong>
+              <a
+                href="tel:09625581195"
+                className="contact-link-item"
+                title="Call or Viber 09625581195"
+              >
+                09625581195
+              </a>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <strong>LinkedIn:</strong>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noreferrer"
+                className="contact-link-item"
+                title="Visit LinkedIn Profile"
+              >
+                Carl Janus Bacolod
+              </a>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <strong>Location:</strong>
+              <a
+                href="https://maps.google.com/?q=Quezon+City,+Philippines"
+                target="_blank"
+                rel="noreferrer"
+                className="contact-link-item"
+                title="View location on Google Maps"
+              >
+                Quezon City, Philippines
+              </a>
+            </div>
           </div>
         </div>
 
