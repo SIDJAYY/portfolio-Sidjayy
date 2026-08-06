@@ -136,7 +136,7 @@ const ALL_POSTS = [
     avatar: '/profile_picture/profilepicture.jpg',
     time: 'August 5, 2026 · 🌐',
     caption: '',
-    image: '/profile_picture/background_photo.png',
+    image: '/profile_picture/bgpost.png',
     tags: [],
     likes: 88,
     comments: [],
