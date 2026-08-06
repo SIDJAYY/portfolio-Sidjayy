@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
-  ThumbsUp, MessageCircle, Share2, Globe, Github, MoreHorizontal, SlidersHorizontal,
+  ThumbsUp, MessageCircle, Share2, Globe, Github, SlidersHorizontal,
   X, ChevronDown, Check, ChevronLeft, ChevronRight, FileText, Send, Smile, Image as ImageIcon
 } from 'lucide-react';
 
@@ -439,9 +439,6 @@ export default function AllTab() {
                   </div>
                 </div>
               </div>
-              <button className="btn-circle-action" style={{ width: '32px', height: '32px' }}>
-                <MoreHorizontal size={18} />
-              </button>
             </div>
 
             {/* Post Caption */}
@@ -559,9 +556,6 @@ export default function AllTab() {
                     <span>{post.time}</span>
                   </div>
                 </div>
-                <button className="btn-circle-action" style={{ width: '32px', height: '32px', background: '#3a3b3c', color: '#e4e6eb' }}>
-                  <MoreHorizontal size={18} />
-                </button>
               </div>
 
               {/* Caption Text & Tags */}
