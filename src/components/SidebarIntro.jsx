@@ -1,14 +1,10 @@
 import React from 'react';
-import { Briefcase, GraduationCap, MapPin, Globe, Code, FileText, Sparkles, Heart } from 'lucide-react';
+import { Briefcase, GraduationCap, MapPin, Globe, Brain, FileText, Sparkles, Heart } from 'lucide-react';
 
 export default function SidebarIntro({ setActiveTab }) {
   return (
     <div className="sidebar-intro-card">
-      <h3 className="card-title-heading">Intro</h3>
-
-      <p style={{ fontSize: '14px', color: '#475569', lineHeight: 1.5 }}>
-        Building high-impact web apps, interactive user interfaces, and scalable backend services with passion.
-      </p>
+      <h3 className="card-title-heading"></h3>
 
       <div className="intro-list">
         <div className="intro-item">
@@ -34,7 +30,7 @@ export default function SidebarIntro({ setActiveTab }) {
         </div>
 
         <div className="intro-item">
-          <Code className="intro-icon" size={18} />
+          <Brain className="intro-icon" size={18} />
           <span>Specialized in <span className="intro-highlight">Hardware, Networking & Web Systems</span></span>
         </div>
       </div>
