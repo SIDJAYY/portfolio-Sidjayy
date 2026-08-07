@@ -27,7 +27,6 @@ const CATEGORIES = [
 ];
 
 const ALL_POSTS = [
-
   {
     id: 3,
     year: 2026,
@@ -45,6 +44,27 @@ const ALL_POSTS = [
     shares: 19,
     isLiked: true,
     github: 'https://github.com',
+  },
+  {
+    id: 8,
+    year: 2026,
+    category: 'Web Development',
+    author: 'Carl Janus Bacolod',
+    avatar: '/profile_picture/profilepicture.jpg',
+    time: 'January 12, 2026 · 🌐',
+    caption: 'Developed a web-based automation system for generating Sales Representative calling cards and identification cards, streamlining the creation process and improving operational efficiency. Successfully presented the solution to stakeholders, demonstrating its functionality, benefits, and business impact.',
+    images: [
+      '/projects_picture/presentation.png',
+      '/projects_picture/web.jpg',
+      '/projects_picture/web1.jpg',
+      '/projects_picture/web2.jpg',
+      '/projects_picture/web3.jpg',
+    ],
+    tags: ['webdevelopment', 'website', 'automation'],
+    likes: 195,
+    comments: [],
+    shares: 18,
+    isLiked: false,
   },
   {
     id: 1,
@@ -160,24 +180,8 @@ const ALL_POSTS = [
     ],
     shares: 7,
     isLiked: false,
-    github: 'https://github.com',
   },
-  // {
-  //   id: 8,
-  //   year: 2026,
-  //   category: 'Networking',
-  //   author: 'Carl Janus Bacolod',
-  //   avatar: '/profile_picture/profilepicture.jpg',
-  //   time: 'February 12, 2026 · 🌐',
-  //   caption: '🌐 Configured enterprise Cisco switches & routers, VLAN subnetting, firewall security rules, and structured ethernet patch panel cable management for our office network infrastructure setup! 🔌💻',
-  //   image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1000&q=80',
-  //   tags: ['Networking', 'Cisco', 'VLAN', 'PatchPanel', 'ITInfrastructure'],
-  //   likes: 195,
-  //   comments: [],
-  //   shares: 18,
-  //   isLiked: false,
-  //   github: 'https://github.com',
-  // },
+
   // {
   //   id: 9,
   //   year: 2026,
