@@ -2072,10 +2072,10 @@ body {
 }
 
 .comment-author-badge {
-  background: rgba(24, 119, 242, 0.25);
-  color: #4599ff;
+  background: rgba(20, 33, 61, 0.12);
+  color: var(--color-navy);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   padding: 1px 7px;
   border-radius: 10px;
   line-height: 1.3;
@@ -2083,14 +2083,16 @@ body {
 
 .comment-text {
   font-size: 13.5px;
-  color: #e4e6eb;
+  color: #14213D;
+  font-weight: 500;
   margin-top: 2px;
   word-break: break-word;
 }
 
 .comment-time {
   font-size: 11px;
-  color: #b0b3b8;
+  color: #64748b;
+  font-weight: 500;
   margin-top: 4px;
   display: block;
 }
@@ -2101,15 +2103,15 @@ body {
   align-items: center;
   gap: 10px;
   padding: 12px 16px;
-  background: #242526;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
 }
 
 .viewer-input-wrapper {
   flex: 1;
   display: flex;
   align-items: center;
-  background: #3a3b3c;
+  background: #f1f5f9;
   border-radius: 20px;
   padding: 6px 12px;
   gap: 8px;
@@ -2120,12 +2122,12 @@ body {
   background: transparent;
   border: none;
   outline: none;
-  color: #e4e6eb;
+  color: #14213D;
   font-size: 13.5px;
 }
 
 .viewer-comment-input::placeholder {
-  color: #b0b3b8;
+  color: #94a3b8;
 }
 
 .viewer-input-tools {
