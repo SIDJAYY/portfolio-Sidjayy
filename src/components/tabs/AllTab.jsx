@@ -5,16 +5,30 @@ import {
   X, ChevronDown, Check, ChevronLeft, ChevronRight, FileText, Send, Smile, Image as ImageIcon
 } from 'lucide-react';
 
-// Splits caption on \n and inserts real <br /> line breaks
+// Splits caption on \n and parses **bold** formatting
 function CaptionText({ text }) {
   if (!text) return null;
+  const lines = text.split('\n');
   return (
     <>
-      {text.split('\n').map((line, i, arr) => (
-        <React.Fragment key={i}>
-          {line}{i < arr.length - 1 && <br />}
-        </React.Fragment>
-      ))}
+      {lines.map((line, i) => {
+        const parts = line.split(/(\*\*.*?\*\*)/g);
+        return (
+          <React.Fragment key={i}>
+            {parts.map((part, pIdx) => {
+              if (part.startsWith('**') && part.endsWith('**')) {
+                return (
+                  <strong key={pIdx} style={{ fontWeight: 800, color: 'var(--color-navy)' }}>
+                    {part.slice(2, -2)}
+                  </strong>
+                );
+              }
+              return part;
+            })}
+            {i < lines.length - 1 && <br />}
+          </React.Fragment>
+        );
+      })}
     </>
   );
 }
@@ -29,23 +43,37 @@ const CATEGORIES = [
 
 const ALL_POSTS = [
   {
-    id: 3,
+    id: 99,
     year: 2026,
     category: '',
     author: 'Carl Janus Bacolod',
     avatar: '/profile_picture/profilepicture.jpg',
-    time: 'August 8, 2026 · 🌐',
-    caption: '🚀 My portfolio website is now live!\n\nWhile the site is fully accessible, it is still under active development as I continue adding new projects and enhancing the overall user experience. Major updates are expected to be completed by August 20, 2026.\n\nThank you for visiting my portfolio!.',
-    image: 'https://plus.unsplash.com/premium_photo-1722069799821-860b3129d252?q=80&w=1636&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    tags: ['under development', 'portfolio'],
-    likes: 219,
-    comments: [
-      { id: 201, author: 'David Kim', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80', text: 'The dark theme palette looks top tier!', time: '2h ago' }
-    ],
-    shares: 19,
-    isLiked: true,
-    github: 'https://github.com',
+    time: 'Just now · 🌐',
+    caption: 'My portfolio website is now live!\n\nWhile the site is fully accessible, it is still **under active development** as I continue adding new projects and enhancing the overall user experience. Major updates are expected to be completed by August 20, 2026.\n\nThank you for visiting my portfolio!.',
+    tags: [],
+    likes: 12,
+    comments: [],
+    shares: 0,
+    isLiked: false,
   },
+  // {
+  //   id: 3,
+  //   year: 2026,
+  //   category: '',
+  //   author: 'Carl Janus Bacolod',
+  //   avatar: '/profile_picture/profilepicture.jpg',
+  //   time: 'August 8, 2026 · 🌐',
+  //   caption: '🚀 My portfolio website is now live!\n\nWhile the site is fully accessible, it is still under active development as I continue adding new projects and enhancing the overall user experience. Major updates are expected to be completed by August 20, 2026.\n\nThank you for visiting my portfolio!.',
+  //   image: 'https://plus.unsplash.com/premium_photo-1722069799821-860b3129d252?q=80&w=1636&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  //   tags: ['under development', 'portfolio'],
+  //   likes: 219,
+  //   comments: [
+  //     { id: 201, author: 'David Kim', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80', text: 'The dark theme palette looks top tier!', time: '2h ago' }
+  //   ],
+  //   shares: 19,
+  //   isLiked: true,
+  //   github: 'https://github.com',
+  // },
   {
     id: 8,
     year: 2026,
@@ -375,16 +403,15 @@ export default function AllTab() {
 
       {/* ── Post Filter Bar ── */}
       <div className="post-filter-bar">
-        <span className="post-filter-label">
-          Posts
-          {filteredCategory && (
-            <span className="post-filter-active-badge category-badge">{filteredCategory}</span>
-          )}
-        </span>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div className="post-filter-left">
+          <span className="post-filter-label">Posts</span>
+        </div>
+
+        <div className="post-filter-right">
           {filteredCategory && (
             <button className="post-filter-clear-btn" onClick={handleClear} title="Clear filter">
-              <X size={14} /> Clear
+              <X size={14} />
+              <span className="clear-btn-text">Clear</span>
             </button>
           )}
 
@@ -394,9 +421,9 @@ export default function AllTab() {
               className={`post-filter-btn ${isFilterOpen || filteredCategory ? 'active' : ''}`}
               onClick={() => setIsFilterOpen(o => !o)}
             >
-              <SlidersHorizontal size={16} />
-              <span>{filteredCategory ? filteredCategory : 'Filters'}</span>
-              <ChevronDown size={14} style={{ transform: isFilterOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }} />
+              <SlidersHorizontal size={15} style={{ flexShrink: 0 }} />
+              <span className="filter-btn-label">{filteredCategory ? filteredCategory : 'Filters'}</span>
+              <ChevronDown size={14} style={{ transform: isFilterOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s', flexShrink: 0 }} />
             </button>
 
             {isFilterOpen && (
@@ -460,13 +487,15 @@ export default function AllTab() {
             </div>
 
             {/* Post Caption */}
-            <div className="fb-post-caption">
+            <div className={`fb-post-caption ${(!post.image && (!post.images || post.images.length === 0) && post.caption && post.caption.length < 80) ? 'short-text-post' : ''}`}>
               <p><CaptionText text={post.caption} /></p>
-              <div className="post-tags-row">
-                {post.tags.map(tag => (
-                  <span key={tag} className="tag-badge">#{tag}</span>
-                ))}
-              </div>
+              {post.tags && post.tags.length > 0 && (
+                <div className="post-tags-row">
+                  {post.tags.map(tag => (
+                    <span key={tag} className="tag-badge">#{tag}</span>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Post Media (Single or Multi-Photo Collage) */}
@@ -512,10 +541,123 @@ export default function AllTab() {
       {viewerState && (() => {
         const { post, photoIndex, comments } = viewerState;
         const images = getPostImages(post);
+        const hasImages = images.length > 0;
+
+        // ── Text-Only Post Modal (Centered Card Layout) ──
+        if (!hasImages) {
+          const textModalJSX = (
+            <div className="fb-text-modal-overlay" onClick={() => setViewerState(null)}>
+              <div className="fb-text-modal-box" onClick={e => e.stopPropagation()}>
+                {/* Header */}
+                <div className="fb-text-modal-header">
+                  <span>{post.author}'s Post</span>
+                  <button className="fb-text-modal-close" onClick={() => setViewerState(null)} title="Close (Esc)">
+                    <X size={18} />
+                  </button>
+                </div>
+
+                {/* Body */}
+                <div className="fb-text-modal-body">
+                  {/* Author Header */}
+                  <div className="post-author-info" style={{ marginBottom: '14px' }}>
+                    <img src={post.avatar} alt={post.author} className="mini-avatar" />
+                    <div>
+                      <div className="author-name">{post.author}</div>
+                      <div className="post-meta">
+                        <span>{post.time}</span>
+                        {post.category && (
+                          <span className="post-category-tag">{post.category}</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Caption */}
+                  <div className="fb-post-caption" style={{ fontSize: '15px', lineHeight: '1.6', marginBottom: '16px' }}>
+                    <p><CaptionText text={post.caption} /></p>
+                    {post.tags && post.tags.length > 0 && (
+                      <div className="post-tags-row" style={{ marginTop: '10px' }}>
+                        {post.tags.map(tag => (
+                          <span key={tag} className="tag-badge">#{tag}</span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Reactions Stats */}
+                  <div className="fb-post-stats" style={{ borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0', padding: '10px 0', marginBottom: '8px' }}>
+                    <div className="reactions-count">
+                      <div className="reaction-icon-circle">
+                        <ThumbsUp size={12} fill="#14213D" />
+                      </div>
+                      <span>{post.likes} reactions</span>
+                    </div>
+                    <div>
+                      <span>{comments.length} comments • {post.shares} shares</span>
+                    </div>
+                  </div>
+
+                  {/* Action Buttons Bar */}
+                  <div className="fb-post-footer-actions" style={{ borderBottom: '1px solid #e2e8f0', marginBottom: '16px', paddingBottom: '8px' }}>
+                    <button
+                      className={`btn-post-interact ${post.isLiked ? 'liked' : ''}`}
+                      onClick={() => toggleLike(post.id)}
+                    >
+                      <ThumbsUp size={18} fill={post.isLiked ? "#FCA311" : "none"} />
+                      <span>{post.isLiked ? 'Liked' : 'Like'}</span>
+                    </button>
+                    <button className="btn-post-interact">
+                      <MessageCircle size={18} />
+                      <span>Comment</span>
+                    </button>
+                    <button className="btn-post-interact">
+                      <Share2 size={18} />
+                      <span>Share</span>
+                    </button>
+                  </div>
+
+                  {/* Comments Section */}
+                  <div className="text-modal-comments-area">
+                    <h4 style={{ fontSize: '15px', fontWeight: '700', color: '#14213D', marginBottom: '12px' }}>
+                      Comments ({comments.length})
+                    </h4>
+                    {comments.length === 0 ? (
+                      <div className="viewer-empty-comments" style={{ padding: '24px 0', background: 'none' }}>
+                        <FileText size={36} style={{ opacity: 0.3, marginBottom: '8px', color: '#14213D' }} />
+                        <p className="no-comments-title" style={{ fontSize: '14px', color: '#14213D' }}>No comments yet</p>
+                        <p className="no-comments-sub" style={{ fontSize: '12px', color: '#64748b' }}>Be the first to comment on this post.</p>
+                      </div>
+                    ) : (
+                      comments.map(c => {
+                        const isAuthor = c.isAuthor || c.author === post.author || c.author === 'Carl Janus Bacolod';
+                        return (
+                          <div key={c.id} className="viewer-comment-item" style={{ marginBottom: '12px' }}>
+                            <img src={c.avatar} alt={c.author} className="mini-avatar" style={{ width: '32px', height: '32px' }} />
+                            <div className="comment-bubble" style={{ background: '#f1f5f9' }}>
+                              <div className="comment-author-row">
+                                <span className="comment-author" style={{ color: '#14213D' }}>{c.author}</span>
+                                {isAuthor && <span className="comment-author-badge">Author</span>}
+                              </div>
+                              <div className="comment-text" style={{ color: '#334155' }}>{c.text}</div>
+                              <span className="comment-time" style={{ color: '#64748b' }}>{c.time}</span>
+                            </div>
+                          </div>
+                        );
+                      })
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+          return createPortal(textModalJSX, document.body);
+        }
+
+        // ── Photo Post Modal (Fullscreen Stage + Comments Panel) ──
         const currentImage = images[photoIndex] || images[0];
         const isMulti = images.length > 1;
 
-        const modalJSX = (
+        const photoModalJSX = (
           <div className="fb-photo-viewer-modal">
             {/* Left Black Stage */}
             <div className="viewer-stage-left">
@@ -578,11 +720,13 @@ export default function AllTab() {
               {/* Caption Text & Tags */}
               <div className="viewer-caption-area">
                 <p><CaptionText text={post.caption} /></p>
-                <div className="post-tags-row" style={{ marginTop: '8px' }}>
-                  {post.tags.map(tag => (
-                    <span key={tag} className="tag-badge dark">#{tag}</span>
-                  ))}
-                </div>
+                {post.tags && post.tags.length > 0 && (
+                  <div className="post-tags-row" style={{ marginTop: '8px' }}>
+                    {post.tags.map(tag => (
+                      <span key={tag} className="tag-badge dark">#{tag}</span>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Reactions & Stats Row */}
@@ -648,7 +792,7 @@ export default function AllTab() {
           </div>
         );
 
-        return createPortal(modalJSX, document.body);
+        return createPortal(photoModalJSX, document.body);
       })()}
     </div>
   );
