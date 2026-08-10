@@ -692,6 +692,7 @@ body {
     transform: scaleX(0);
     opacity: 0;
   }
+
   to {
     transform: scaleX(1);
     opacity: 1;
@@ -709,6 +710,7 @@ body {
     opacity: 0;
     transform: translateY(14px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -2563,7 +2565,8 @@ body {
 
   .profile-tabs-bar {
     padding: 0 2px;
-    overflow-x: hidden; /* No scrolling needed */
+    overflow-x: hidden;
+    /* No scrolling needed */
   }
 
   .profile-tab-button {
@@ -2663,23 +2666,4 @@ body {
     max-height: none;
     overflow-y: visible;
   }
-}
-
-.viewer-nav-btn.next {
-  right: 10px;
-}
-
-.viewer-panel-right {
-  width: 100%;
-  min-width: 100%;
-  flex: 1;
-  border-left: none;
-  border-top: 1px solid #3e4042;
-  overflow-y: visible;
-}
-
-.viewer-comments-body {
-  max-height: none;
-  overflow-y: visible;
-}
-}
+}

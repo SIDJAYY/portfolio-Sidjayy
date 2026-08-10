@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Award, ExternalLink, Calendar, CheckCircle2, BookOpen, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const CERTIFICATIONS = [
@@ -42,6 +43,18 @@ const CATEGORIES = ['All', ...new Set(CERTIFICATIONS.map(c => c.category))];
 export default function CertificationsTab() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [lightboxCert, setLightboxCert] = useState(null);
+
+  // Lock body scroll when certificate lightbox modal is active
+  useEffect(() => {
+    if (lightboxCert) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [lightboxCert]);
 
   const visible = CERTIFICATIONS.filter(
     c => activeCategory === 'All' || c.category === activeCategory
@@ -149,7 +162,7 @@ export default function CertificationsTab() {
       ))}
 
       {/* Lightbox Modal */}
-      {lightboxCert && (
+      {lightboxCert && createPortal(
         <div className="cert-lightbox-overlay" onClick={() => setLightboxCert(null)}>
           <div className="cert-lightbox-box" onClick={e => e.stopPropagation()}>
             <div className="cert-lightbox-header">
@@ -177,7 +190,8 @@ export default function CertificationsTab() {
               </a>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

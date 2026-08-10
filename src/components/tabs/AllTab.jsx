@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import {
   ThumbsUp, MessageCircle, Share2, Globe, Github, SlidersHorizontal,
   X, ChevronDown, Check, ChevronLeft, ChevronRight, FileText, Send, Smile, Image as ImageIcon
@@ -310,6 +311,18 @@ export default function AllTab() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [viewerState]);
 
+  // Lock body scroll when photo viewer modal is open
+  useEffect(() => {
+    if (viewerState) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [viewerState]);
+
   const toggleLike = (id) => {
     setPosts(prev => prev.map(p => {
       if (p.id === id) {
@@ -496,14 +509,13 @@ export default function AllTab() {
         );
       })}
 
-      {/* ── Facebook Fullscreen Photo Viewer Modal (Matching Reference Picture) ── */}
       {viewerState && (() => {
         const { post, photoIndex, comments } = viewerState;
         const images = getPostImages(post);
         const currentImage = images[photoIndex] || images[0];
         const isMulti = images.length > 1;
 
-        return (
+        const modalJSX = (
           <div className="fb-photo-viewer-modal">
             {/* Left Black Stage */}
             <div className="viewer-stage-left">
@@ -632,11 +644,11 @@ export default function AllTab() {
                   })
                 )}
               </div>
-
-
             </div>
           </div>
         );
+
+        return createPortal(modalJSX, document.body);
       })()}
     </div>
   );
