@@ -2,6 +2,34 @@ import React from 'react';
 import { CheckCircle2, Instagram, Twitter, Facebook, Github, Linkedin } from 'lucide-react';
 
 export default function ProfileHeader({ activeTab, setActiveTab }) {
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+
+    // Smoothly scroll the window to position sticky tab bar & content at top
+    setTimeout(() => {
+      const isMobile = window.innerWidth <= 768;
+      const stickyWrapper = document.querySelector('.profile-tabs-sticky-wrapper');
+      const mainFeed = document.querySelector('.main-feed-col');
+
+      if (isMobile && mainFeed && stickyWrapper) {
+        // On mobile single-column layout, scroll past SidebarIntro straight into main-feed-col
+        const stickyHeight = stickyWrapper.offsetHeight || 44;
+        const targetY = mainFeed.getBoundingClientRect().top + window.scrollY - stickyHeight;
+        window.scrollTo({
+          top: Math.max(0, targetY),
+          behavior: 'smooth'
+        });
+      } else if (stickyWrapper) {
+        // On desktop 2-column layout, scroll to top of profile-main-layout / stickyWrapper
+        const targetY = stickyWrapper.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: Math.max(0, targetY),
+          behavior: 'smooth'
+        });
+      }
+    }, 20);
+  };
+
   return (
     <>
       {/* Profile Header Main Card (Cover + Avatar + Info) */}
@@ -75,7 +103,7 @@ export default function ProfileHeader({ activeTab, setActiveTab }) {
               <div className="user-location-row">
                 <span>Caloocan City, National Capital Region, Philippines</span>
                 <span className="dot-divider">•</span>
-                <a href="#contact" className="contact-info-link" onClick={(e) => { e.preventDefault(); setActiveTab('ABOUT'); }}>Contact info</a>
+                <a href="#contact" className="contact-info-link" onClick={(e) => { e.preventDefault(); handleTabClick('ABOUT'); }}>Contact info</a>
               </div>
             </div>
           </div>
@@ -87,33 +115,35 @@ export default function ProfileHeader({ activeTab, setActiveTab }) {
         <div className="profile-tabs-bar">
           <button
             className={`profile-tab-button ${activeTab === 'ALL' ? 'active' : ''}`}
-            onClick={() => setActiveTab('ALL')}
+            onClick={() => handleTabClick('ALL')}
           >
             ALL
           </button>
           <button
             className={`profile-tab-button ${activeTab === 'ABOUT' ? 'active' : ''}`}
-            onClick={() => setActiveTab('ABOUT')}
+            onClick={() => handleTabClick('ABOUT')}
           >
             ABOUT
           </button>
           <button
             className={`profile-tab-button ${activeTab === 'EXPERIENCE' ? 'active' : ''}`}
-            onClick={() => setActiveTab('EXPERIENCE')}
+            onClick={() => handleTabClick('EXPERIENCE')}
           >
-            EXPERIENCE
+            <span className="tab-label-full">EXPERIENCE</span>
+            <span className="tab-label-short">EXP</span>
           </button>
           <button
             className={`profile-tab-button ${activeTab === 'SKILLS' ? 'active' : ''}`}
-            onClick={() => setActiveTab('SKILLS')}
+            onClick={() => handleTabClick('SKILLS')}
           >
             SKILLS
           </button>
           <button
             className={`profile-tab-button ${activeTab === 'CERTIFICATIONS' ? 'active' : ''}`}
-            onClick={() => setActiveTab('CERTIFICATIONS')}
+            onClick={() => handleTabClick('CERTIFICATIONS')}
           >
-            CERTIFICATIONS
+            <span className="tab-label-full">CERTIFICATIONS</span>
+            <span className="tab-label-short">CERTS</span>
           </button>
         </div>
       </div>
