@@ -42,6 +42,7 @@ const CATEGORIES = [
 ];
 
 const ALL_POSTS = [
+  //>>>>>>>>>>>>>> TEXT ONLY POST <<<<<<<<<<<<<<<
   {
     id: 99,
     year: 2026,
