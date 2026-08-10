@@ -57,24 +57,7 @@ const ALL_POSTS = [
     shares: 0,
     isLiked: false,
   },
-  // {
-  //   id: 3,
-  //   year: 2026,
-  //   category: '',
-  //   author: 'Carl Janus Bacolod',
-  //   avatar: '/profile_picture/profilepicture.jpg',
-  //   time: 'August 8, 2026 · 🌐',
-  //   caption: '🚀 My portfolio website is now live!\n\nWhile the site is fully accessible, it is still under active development as I continue adding new projects and enhancing the overall user experience. Major updates are expected to be completed by August 20, 2026.\n\nThank you for visiting my portfolio!.',
-  //   image: 'https://plus.unsplash.com/premium_photo-1722069799821-860b3129d252?q=80&w=1636&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  //   tags: ['under development', 'portfolio'],
-  //   likes: 219,
-  //   comments: [
-  //     { id: 201, author: 'David Kim', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80', text: 'The dark theme palette looks top tier!', time: '2h ago' }
-  //   ],
-  //   shares: 19,
-  //   isLiked: true,
-  //   github: 'https://github.com',
-  // },
+
   {
     id: 8,
     year: 2026,
@@ -162,22 +145,7 @@ const ALL_POSTS = [
     isLiked: false,
     github: 'https://github.com',
   },
-  // {
-  //   id: 5,
-  //   year: 2024,
-  //   category: 'Data Analysis',
-  //   author: 'Carl Janus Bacolod',
-  //   avatar: '/profile_picture/profilepicture.jpg',
-  //   time: 'November 10, 2024 · 🌐',
-  //   caption: '💡 Completed a full-stack database management system for our thesis. Built with PostgreSQL, Express, and React. Engineered for data analytics and real-time report visualization! 📊',
-  //   image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80',
-  //   tags: ['PostgreSQL', 'Express', 'React', 'Thesis', 'Full-Stack'],
-  //   likes: 201,
-  //   comments: [],
-  //   shares: 14,
-  //   isLiked: false,
-  //   github: 'https://github.com',
-  // },
+
   {
     id: 6,
     year: 2026,
@@ -194,6 +162,7 @@ const ALL_POSTS = [
     isLiked: false,
     github: 'https://github.com',
   },
+
   {
     id: 7,
     year: 2026,
@@ -212,22 +181,7 @@ const ALL_POSTS = [
     isLiked: false,
   },
 
-  // {
-  //   id: 9,
-  //   year: 2026,
-  //   category: 'Data Analysis',
-  //   author: 'Carl Janus Bacolod',
-  //   avatar: '/profile_picture/profilepicture.jpg',
-  //   time: 'February 2, 2026 · 🌐',
-  //   caption: '📊 Engineered an automated Python & SQL data analytics dashboard for processing system logs, tracking server resource usage, and generating real-time uptime reports. 📈💻',
-  //   image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-  //   tags: ['DataAnalysis', 'Python', 'SQL', 'Dashboard', 'Metrics'],
-  //   likes: 240,
-  //   comments: [],
-  //   shares: 22,
-  //   isLiked: false,
-  //   github: 'https://github.com',
-  // }
+  
 ];
 
 // Helper function to extract array of images from a post (handles image: [], images: [], image: '', images: '')
