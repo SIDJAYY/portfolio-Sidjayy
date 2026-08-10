@@ -6,14 +6,12 @@ import AboutTab from './components/tabs/AboutTab.jsx';
 import ExperienceTab from './components/tabs/ExperienceTab.jsx';
 import SkillsTab from './components/tabs/SkillsTab.jsx';
 import CertificationsTab from './components/tabs/CertificationsTab.jsx';
-import MessengerWidget from './components/MessengerWidget.jsx';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('ALL');
 
   return (
     <div className="app-container">
-      {/* Main Profile Shell */}
       <main className="profile-shell">
         {/* Facebook Profile Header Card (Cover, Avatar, Meta, Tabs) */}
         <ProfileHeader activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -25,19 +23,19 @@ export default function App() {
             <SidebarIntro setActiveTab={setActiveTab} />
           </aside>
 
-          {/* Right Column: Tab View Content */}
+          {/* Right Column: Tab View Content with Smooth Transition */}
           <section className="main-feed-col">
-            {activeTab === 'ALL' && <AllTab />}
-            {activeTab === 'ABOUT' && <AboutTab />}
-            {activeTab === 'EXPERIENCE' && <ExperienceTab />}
-            {activeTab === 'SKILLS' && <SkillsTab />}
-            {activeTab === 'CERTIFICATIONS' && <CertificationsTab />}
+            <div key={activeTab} className="tab-content-anim">
+              {activeTab === 'ALL' && <AllTab />}
+              {activeTab === 'ABOUT' && <AboutTab />}
+              {activeTab === 'EXPERIENCE' && <ExperienceTab />}
+              {activeTab === 'SKILLS' && <SkillsTab />}
+              {activeTab === 'CERTIFICATIONS' && <CertificationsTab />}
+            </div>
           </section>
         </div>
       </main>
 
-      {/* Facebook Messenger Chat Popup */}
-      <MessengerWidget />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Home, Tv, Store, Users, Bell, MessageSquare, Menu } from 'lucide-react';
+import { Search, Home, Tv, Store, Users, Bell, Menu } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab }) {
   return (
@@ -59,16 +59,7 @@ export default function Navbar({ activeTab, setActiveTab }) {
         <button className="nav-circle-btn" title="Menu">
           <Menu size={18} />
         </button>
-        <button
-          className="nav-circle-btn"
-          title="Messenger"
-          onClick={() => {
-            const fab = document.getElementById('messenger-fab-trigger');
-            if (fab) fab.click();
-          }}
-        >
-          <MessageSquare size={18} />
-        </button>
+
         <button className="nav-circle-btn" title="Notifications">
           <Bell size={18} />
         </button>
