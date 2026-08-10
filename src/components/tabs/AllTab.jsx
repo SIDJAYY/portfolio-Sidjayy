@@ -34,7 +34,7 @@ const ALL_POSTS = [
     author: 'Carl Janus Bacolod',
     avatar: '/profile_picture/profilepicture.jpg',
     time: 'August 8, 2026 · 🌐',
-    caption: '🚀 My portfolio website is now live!\n\nWhile the site is fully accessible, it is still under active development as I continue refining the design, adding new projects, improving features, and enhancing the overall user experience. Major updates are expected to be completed by August 20, 2026.\n\nThank you for taking the time to visit my portfolio. I truly appreciate your support, and if you have any feedback or suggestions, I\'d love to hear them!',
+    caption: '🚀 My portfolio website is now live!\n\nWhile the site is fully accessible, it is still under active development as I continue adding new projects and enhancing the overall user experience. Major updates are expected to be completed by August 20, 2026.\n\nThank you for visiting my portfolio!.',
     image: 'https://plus.unsplash.com/premium_photo-1722069799821-860b3129d252?q=80&w=1636&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     tags: ['under development', 'portfolio'],
     likes: 219,
