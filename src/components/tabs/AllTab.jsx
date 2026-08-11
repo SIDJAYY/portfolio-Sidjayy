@@ -359,7 +359,7 @@ export default function AllTab() {
       {/* ── Post Filter Bar ── */}
       <div className="post-filter-bar">
         <div className="post-filter-left">
-          <span className="post-filter-label">Posts</span>
+          <span className="post-filter-label">Works</span>
         </div>
 
         <div className="post-filter-right">
@@ -608,103 +608,143 @@ export default function AllTab() {
           return createPortal(textModalJSX, document.body);
         }
 
-        // ── Photo Post Modal (Fullscreen Stage + Comments Panel) ──
+        // ── Photo Post Modal (Premium Redesign) ──
         const currentImage = images[photoIndex] || images[0];
         const isMulti = images.length > 1;
 
         const photoModalJSX = (
-          <div className="fb-photo-viewer-modal">
-            {/* Left Black Stage */}
-            <div className="viewer-stage-left">
-              {/* Close Button Top Left */}
-              <button
-                className="viewer-close-btn"
-                onClick={() => setViewerState(null)}
-                title="Close viewer (Esc)"
-              >
-                <X size={22} />
-              </button>
+          <div className="fb-photo-viewer-modal" onClick={() => setViewerState(null)}>
+            {/* Left Dark Cinematic Stage */}
+            <div className="viewer-stage-left" onClick={e => e.stopPropagation()}>
 
-              {/* Photo Index Indicator */}
-              {isMulti && (
-                <div className="viewer-index-indicator">
-                  Photo {photoIndex + 1} of {images.length}
-                </div>
-              )}
-
-              {/* Prev / Next Arrows */}
-              {isMulti && (
-                <>
-                  <button className="viewer-nav-btn prev" onClick={handlePrevPhoto} title="Previous photo">
-                    <ChevronLeft size={28} />
-                  </button>
-                  <button className="viewer-nav-btn next" onClick={handleNextPhoto} title="Next photo">
-                    <ChevronRight size={28} />
-                  </button>
-                </>
-              )}
-
-              {/* Center Main Image */}
-              <div className="viewer-img-container">
-                <img src={currentImage} alt="Fullscreen View" className="viewer-main-img" />
-              </div>
-            </div>
-
-            {/* Right Dark Panel (Matching Facebook Post Viewer) */}
-            <div className="viewer-panel-right">
-              {/* Top Banner Notice */}
-              <div className="viewer-top-notice">
-                <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <FileText size={14} color="#94a3b8" />
-                  This photo is from a post.
-                </span>
-                <span className="viewer-view-post-link" onClick={() => setViewerState(null)}>View post</span>
-              </div>
-
-              {/* Author Header */}
-              <div className="viewer-author-header">
-                <img src={post.avatar} alt={post.author} className="mini-avatar" />
-                <div style={{ flex: 1 }}>
-                  <div className="author-name">{post.author}</div>
-                  <div className="post-meta">
-                    <span>{post.time}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Caption Text & Tags */}
-              <div className="viewer-caption-area">
-                <p><CaptionText text={post.caption} /></p>
-                {post.tags && post.tags.length > 0 && (
-                  <div className="post-tags-row" style={{ marginTop: '8px' }}>
-                    {post.tags.map(tag => (
-                      <span key={tag} className="tag-badge dark">#{tag}</span>
-                    ))}
+              {/* Top Bar: Close + Counter */}
+              <div className="viewer-stage-topbar">
+                <button
+                  className="viewer-close-btn"
+                  onClick={() => setViewerState(null)}
+                  title="Close (Esc)"
+                >
+                  <X size={20} />
+                </button>
+                {isMulti && (
+                  <div className="viewer-index-indicator">
+                    {photoIndex + 1} / {images.length}
                   </div>
                 )}
               </div>
 
-              {/* Reactions & Stats Row */}
+              {/* Prev / Next Arrows */}
+              {isMulti && (
+                <>
+                  <button className="viewer-nav-btn prev" onClick={handlePrevPhoto} title="Previous">
+                    <ChevronLeft size={26} />
+                  </button>
+                  <button className="viewer-nav-btn next" onClick={handleNextPhoto} title="Next">
+                    <ChevronRight size={26} />
+                  </button>
+                </>
+              )}
+
+              {/* Main Image */}
+              <div className="viewer-img-container">
+                <img
+                  key={currentImage}
+                  src={currentImage}
+                  alt={`Photo ${photoIndex + 1}`}
+                  className="viewer-main-img"
+                />
+              </div>
+
+              {/* Thumbnail Strip */}
+              {isMulti && (
+                <div className="viewer-thumbnail-strip">
+                  {images.map((img, idx) => (
+                    <button
+                      key={idx}
+                      className={`viewer-thumb-btn ${idx === photoIndex ? 'active' : ''}`}
+                      onClick={() => setViewerState(prev => ({ ...prev, photoIndex: idx }))}
+                    >
+                      <img src={img} alt={`Thumb ${idx + 1}`} className="viewer-thumb-img" />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Right Premium Dark Panel */}
+            <div className="viewer-panel-right" onClick={e => e.stopPropagation()}>
+
+              {/* Author Header with Gradient */}
+              <div className="viewer-author-header">
+                <div className="viewer-author-avatar-wrap">
+                  <img src={post.avatar} alt={post.author} className="viewer-author-avatar" />
+                  <span className="viewer-author-online-dot" />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div className="viewer-author-name">{post.author}</div>
+                  <div className="viewer-author-meta">
+                    <span>{post.time}</span>
+                    {post.category && <span className="viewer-category-badge">{post.category}</span>}
+                  </div>
+                </div>
+                <button
+                  className="viewer-panel-close-btn"
+                  onClick={() => setViewerState(null)}
+                  title="Close"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+
+              {/* Caption */}
+              {post.caption && (
+                <div className="viewer-caption-area">
+                  <p><CaptionText text={post.caption} /></p>
+                  {post.tags && post.tags.length > 0 && (
+                    <div className="post-tags-row" style={{ marginTop: '10px' }}>
+                      {post.tags.map(tag => (
+                        <span key={tag} className="tag-badge viewer-tag">{`#${tag}`}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Photo Dots Navigator (if multi) */}
+              {isMulti && (
+                <div className="viewer-dots-nav">
+                  {images.map((_, idx) => (
+                    <button
+                      key={idx}
+                      className={`viewer-dot ${idx === photoIndex ? 'active' : ''}`}
+                      onClick={() => setViewerState(prev => ({ ...prev, photoIndex: idx }))}
+                      title={`Photo ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {/* Stats Row */}
               <div className="viewer-stats-row">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <div className="reaction-icon-circle" style={{ background: '#1877f2' }}>
+                  <div className="viewer-reaction-bubble">
                     <ThumbsUp size={11} fill="#ffffff" color="#ffffff" />
                   </div>
-                  <span>{post.likes}</span>
+                  <span>{post.likes} reactions</span>
                 </div>
                 <div>
                   <span>{comments.length} comments • {post.shares} shares</span>
                 </div>
               </div>
 
-              {/* Interaction Buttons Bar */}
+              {/* Action Buttons */}
               <div className="viewer-action-bar">
                 <button
                   className={`btn-viewer-action ${post.isLiked ? 'liked' : ''}`}
                   onClick={() => toggleLike(post.id)}
                 >
                   <ThumbsUp size={16} fill={post.isLiked ? "#FCA311" : "none"} />
-                  <span>Like</span>
+                  <span>{post.isLiked ? 'Liked' : 'Like'}</span>
                 </button>
                 <button className="btn-viewer-action">
                   <MessageCircle size={16} />
@@ -720,7 +760,7 @@ export default function AllTab() {
               <div className="viewer-comments-body">
                 {comments.length === 0 ? (
                   <div className="viewer-empty-comments">
-                    <FileText size={44} style={{ opacity: 0.3, marginBottom: '12px' }} />
+                    <FileText size={40} style={{ opacity: 0.2, marginBottom: '10px' }} />
                     <p className="no-comments-title">No comments yet</p>
                     <p className="no-comments-sub">Be the first to comment.</p>
                   </div>
