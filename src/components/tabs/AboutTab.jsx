@@ -77,7 +77,7 @@ export default function AboutTab() {
               <img src="/profile_picture/cscqc.png" alt="CSCQC" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
               <div>
                 <strong>College of St. Catherine Quezon City</strong>
-                <div style={{ fontSize: '12px', color: '#64748b' }}>Secondary / High School Education</div>
+                <div style={{ fontSize: '12px', color: '#64748b' }}>Humanities & Social Sciences</div>
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
