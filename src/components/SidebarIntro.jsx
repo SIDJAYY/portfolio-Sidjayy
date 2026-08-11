@@ -1,7 +1,43 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Briefcase, GraduationCap, MapPin, Globe, Brain, FileText, Sparkles, Heart } from 'lucide-react';
 
 export default function SidebarIntro({ setActiveTab }) {
+  useEffect(() => {
+    const updateStickyTop = () => {
+      if (window.innerWidth <= 860) return;
+
+      const sidebarCard = document.querySelector('.sidebar-intro-card');
+      const sidebarCol = document.querySelector('.left-sidebar-col');
+      if (!sidebarCard || !sidebarCol) return;
+
+      const sidebarHeight = sidebarCard.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      const topOffset = 45;
+      const bottomGap = 16;
+
+      if (sidebarHeight > (viewportHeight - topOffset - bottomGap)) {
+        const calculatedTop = viewportHeight - sidebarHeight - bottomGap;
+        sidebarCol.style.setProperty('--sidebar-sticky-top', `${calculatedTop}px`);
+      } else {
+        sidebarCol.style.setProperty('--sidebar-sticky-top', `${topOffset}px`);
+      }
+    };
+
+    updateStickyTop();
+    window.addEventListener('resize', updateStickyTop);
+
+    const cardEl = document.querySelector('.sidebar-intro-card');
+    let observer;
+    if (cardEl && typeof ResizeObserver !== 'undefined') {
+      observer = new ResizeObserver(updateStickyTop);
+      observer.observe(cardEl);
+    }
+
+    return () => {
+      window.removeEventListener('resize', updateStickyTop);
+      if (observer) observer.disconnect();
+    };
+  }, []);
   return (
     <div className="sidebar-intro-card">
       <h3 className="card-title-heading"></h3>

@@ -6,19 +6,33 @@ export default function ProfileHeader({ activeTab, setActiveTab }) {
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
+    const handleScrollCheck = () => {
+      const wrapper = document.querySelector('.profile-tabs-sticky-wrapper');
+      if (!wrapper) return;
+      const top = wrapper.getBoundingClientRect().top;
+      setIsSticky(top <= 2);
+    };
+
+    handleScrollCheck();
+
+    window.addEventListener('scroll', handleScrollCheck, { passive: true });
+    window.addEventListener('resize', handleScrollCheck, { passive: true });
+
     const sentinel = sentinelRef.current;
-    if (!sentinel) return;
+    let observer;
+    if (sentinel && typeof IntersectionObserver !== 'undefined') {
+      observer = new IntersectionObserver(
+        () => handleScrollCheck(),
+        { threshold: [0, 1] }
+      );
+      observer.observe(sentinel);
+    }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // When sentinel moves out of top viewport, the tab wrapper is sticky
-        setIsSticky(entry.boundingClientRect.top < 0 && !entry.isIntersecting);
-      },
-      { threshold: [0], rootMargin: '-10px 0px 0px 0px' }
-    );
-
-    observer.observe(sentinel);
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener('scroll', handleScrollCheck);
+      window.removeEventListener('resize', handleScrollCheck);
+      if (observer) observer.disconnect();
+    };
   }, []);
 
   const handleTabClick = (tabName) => {
