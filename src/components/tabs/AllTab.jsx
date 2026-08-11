@@ -85,7 +85,7 @@ const ALL_POSTS = [
     category: 'Web Development',
     author: 'Carl Janus Bacolod',
     avatar: '/profile_picture/profilepicture.jpg',
-    time: 'January 12, 2026 · 🌐',
+    time: 'April 7, 2026 · 🌐',
     caption: 'I’m happy to share the successful completion of our Capstone Project (Thesis), where I had the opportunity to serve as the **Project Manager** for a government client, University of Caloocan City (UCC).\n\nOur team developed a comprehensive **GOVERNMENT MANAGEMENT SYSTEM IN EDUCATION & SCHOLARSHIP WITH AI-POWERED VIRTUAL ASSISTANCE FOR APPLICATION SUPPORT BY DIALOGFLOW** designed to streamline and modernize the scholarship application and management process.',
     images: [
       '/projects_picture/ucc1.jpeg',
