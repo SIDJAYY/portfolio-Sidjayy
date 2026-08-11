@@ -79,25 +79,6 @@ export default function ProfileHeader({ activeTab, setActiveTab }) {
             }}
           />
           <div className="cover-overlay"></div>
-
-          {/* Floating Social Icons on Cover Photo */}
-          <div className="cover-social-floating">
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="social-icon-link" title="GitHub">
-              <Github size={18} />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-icon-link" title="LinkedIn">
-              <Linkedin size={18} />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="social-icon-link" title="Twitter">
-              <Twitter size={18} />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="social-icon-link" title="Instagram">
-              <Instagram size={18} />
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="social-icon-link" title="Facebook">
-              <Facebook size={18} />
-            </a>
-          </div>
         </div>
 
         {/* Profile Details Container */}

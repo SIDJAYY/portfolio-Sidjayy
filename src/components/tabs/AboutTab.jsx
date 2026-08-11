@@ -42,7 +42,7 @@ export default function AboutTab() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <strong>LinkedIn:</strong>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/carl-janus-bacolod"
                 target="_blank"
                 rel="noreferrer"
                 className="contact-link-item"
