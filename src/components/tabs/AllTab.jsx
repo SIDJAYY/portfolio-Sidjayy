@@ -65,7 +65,7 @@ const ALL_POSTS = [
     author: 'Carl Janus Bacolod',
     avatar: '/profile_picture/profilepicture.jpg',
     time: 'January 12, 2026 · 🌐',
-    caption: 'Developed a web-based automation system for generating Sales Representative calling cards and identification cards, streamlining the creation process and improving operational efficiency. Successfully presented the solution to stakeholders, demonstrating its functionality, benefits, and business impact.',
+    caption: 'Developed a web-based automation system for generating Sales Representative calling cards and identification cards, streamlining the creation process and improving operational efficiency. Successfully presented the solution to stakeholders, demonstrating its functionality, benefits, and business impact at PERTUA.',
     images: [
       '/projects_picture/presentation.png',
       '/projects_picture/web.jpg',
@@ -73,7 +73,7 @@ const ALL_POSTS = [
       '/projects_picture/web2.jpg',
       '/projects_picture/web3.jpg',
     ],
-    tags: ['webdevelopment', 'website', 'automation'],
+    tags: ['webdevelopment', 'website', 'automation', 'PERTUA'],
     likes: 195,
     comments: [],
     shares: 18,
