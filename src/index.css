@@ -647,6 +647,7 @@ body {
 
 .profile-tabs-bar {
   display: flex;
+  align-items: center;
   gap: 0;
   padding: 0 16px;
   background: var(--color-white);
@@ -669,6 +670,54 @@ body {
 
 .profile-tabs-bar::-webkit-scrollbar {
   display: none;
+}
+
+/* Brand Identity shown inside Sticky Tab Bar on Desktop */
+.sticky-brand-identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    margin-right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-right: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.profile-tabs-sticky-wrapper.is-sticky .sticky-brand-identity {
+  max-width: 220px;
+  opacity: 1;
+  margin-right: 50px;
+  pointer-events: auto;
+}
+
+.sticky-brand-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #FCA311;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(252, 163, 17, 0.4);
+}
+
+.sticky-brand-name {
+  font-size: 15px;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.profile-tabs-group {
+  display: flex;
+  align-items: center;
+  gap: 0;
 }
 
 .profile-tab-button {
@@ -1914,7 +1963,7 @@ body {
   align-items: center;
   gap: 14px;
   padding: 18px 20px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
   z-index: 20;
 }
 
@@ -1978,8 +2027,13 @@ body {
   transform: translateY(-50%) scale(1.08);
 }
 
-.viewer-nav-btn.prev { left: 20px; }
-.viewer-nav-btn.next { right: 20px; }
+.viewer-nav-btn.prev {
+  left: 20px;
+}
+
+.viewer-nav-btn.next {
+  right: 20px;
+}
 
 /* Main image */
 .viewer-img-container {
@@ -2010,7 +2064,7 @@ body {
   width: 100%;
   overflow-x: auto;
   justify-content: center;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
   scrollbar-width: none;
 }
 
@@ -2023,7 +2077,7 @@ body {
   height: 40px;
   border-radius: 6px;
   overflow: hidden;
-  border: 2px solid rgba(255,255,255,0.15);
+  border: 2px solid rgba(255, 255, 255, 0.15);
   background: none;
   cursor: pointer;
   padding: 0;
@@ -2040,7 +2094,7 @@ body {
 
 .viewer-thumb-btn:hover {
   opacity: 0.85;
-  border-color: rgba(255,255,255,0.4);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .viewer-thumb-img {
@@ -2266,7 +2320,7 @@ body {
   gap: 12px;
   background: #0f172a;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.1) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
 .viewer-comments-body::-webkit-scrollbar {
@@ -2274,7 +2328,7 @@ body {
 }
 
 .viewer-comments-body::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 4px;
 }
 
@@ -2285,7 +2339,7 @@ body {
   justify-content: center;
   padding: 40px 16px;
   text-align: center;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255, 255, 255, 0.3);
   margin: auto;
 }
 
@@ -2778,6 +2832,10 @@ body {
     border-bottom-right-radius: 16px;
   }
 
+  .sticky-brand-identity {
+    display: none !important;
+  }
+
   .cover-banner-wrap {
     height: 200px;
     border-top-left-radius: 16px;
@@ -2875,6 +2933,14 @@ body {
     display: flex;
     width: 100%;
     justify-content: space-between;
+  }
+
+  .profile-tabs-group {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
   }
 
   .profile-tab-button {
@@ -2991,8 +3057,13 @@ body {
     z-index: 100;
   }
 
-  .viewer-nav-btn.prev { left: 10px; }
-  .viewer-nav-btn.next { right: 10px; }
+  .viewer-nav-btn.prev {
+    left: 10px;
+  }
+
+  .viewer-nav-btn.next {
+    right: 10px;
+  }
 
   .viewer-thumbnail-strip {
     padding: 8px 12px 14px;

@@ -149,38 +149,54 @@ export default function ProfileHeader({ activeTab, setActiveTab }) {
       {/* Sticky Tab Navigation Bar - Direct child of profile-shell for full page sticky scrolling */}
       <div className={`profile-tabs-sticky-wrapper ${isSticky ? 'is-sticky' : ''}`}>
         <div className="profile-tabs-bar">
-          <button
-            className={`profile-tab-button ${activeTab === 'ALL' ? 'active' : ''}`}
-            onClick={() => handleTabClick('ALL')}
-          >
-            ALL
-          </button>
-          <button
-            className={`profile-tab-button ${activeTab === 'ABOUT' ? 'active' : ''}`}
-            onClick={() => handleTabClick('ABOUT')}
-          >
-            ABOUT
-          </button>
-          <button
-            className={`profile-tab-button ${activeTab === 'EXPERIENCE' ? 'active' : ''}`}
-            onClick={() => handleTabClick('EXPERIENCE')}
-          >
-            <span className="tab-label-full">EXPERIENCE</span>
-            <span className="tab-label-short">EXP</span>
-          </button>
-          <button
-            className={`profile-tab-button ${activeTab === 'SKILLS' ? 'active' : ''}`}
-            onClick={() => handleTabClick('SKILLS')}
-          >
-            SKILLS
-          </button>
-          <button
-            className={`profile-tab-button ${activeTab === 'CERTIFICATIONS' ? 'active' : ''}`}
-            onClick={() => handleTabClick('CERTIFICATIONS')}
-          >
-            <span className="tab-label-full">CERTIFICATIONS</span>
-            <span className="tab-label-short">CERTS</span>
-          </button>
+          {/* Brand/Profile identity on left (Shown ONLY when sticky on wider screens) */}
+          <div className="sticky-brand-identity">
+            <img
+              src="/profile_picture/profilepicture.jpg"
+              alt="SIDJAY"
+              className="sticky-brand-avatar"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80";
+              }}
+            />
+            <span className="sticky-brand-name">SIDJAY</span>
+          </div>
+
+          <div className="profile-tabs-group">
+            <button
+              className={`profile-tab-button ${activeTab === 'ALL' ? 'active' : ''}`}
+              onClick={() => handleTabClick('ALL')}
+            >
+              ALL
+            </button>
+            <button
+              className={`profile-tab-button ${activeTab === 'ABOUT' ? 'active' : ''}`}
+              onClick={() => handleTabClick('ABOUT')}
+            >
+              ABOUT
+            </button>
+            <button
+              className={`profile-tab-button ${activeTab === 'EXPERIENCE' ? 'active' : ''}`}
+              onClick={() => handleTabClick('EXPERIENCE')}
+            >
+              <span className="tab-label-full">EXPERIENCE</span>
+              <span className="tab-label-short">EXP</span>
+            </button>
+            <button
+              className={`profile-tab-button ${activeTab === 'SKILLS' ? 'active' : ''}`}
+              onClick={() => handleTabClick('SKILLS')}
+            >
+              SKILLS
+            </button>
+            <button
+              className={`profile-tab-button ${activeTab === 'CERTIFICATIONS' ? 'active' : ''}`}
+              onClick={() => handleTabClick('CERTIFICATIONS')}
+            >
+              <span className="tab-label-full">CERTIFICATIONS</span>
+              <span className="tab-label-short">CERTS</span>
+            </button>
+          </div>
         </div>
       </div>
     </>
