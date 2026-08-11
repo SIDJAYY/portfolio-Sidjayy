@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, Instagram, Twitter, Facebook, Github, Linkedin } from 'lucide-react';
 
 export default function ProfileHeader({ activeTab, setActiveTab }) {
+  const sentinelRef = useRef(null);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // When sentinel moves out of top viewport, the tab wrapper is sticky
+        setIsSticky(entry.boundingClientRect.top < 0 && !entry.isIntersecting);
+      },
+      { threshold: [0], rootMargin: '-10px 0px 0px 0px' }
+    );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, []);
+
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
 
@@ -110,8 +129,11 @@ export default function ProfileHeader({ activeTab, setActiveTab }) {
         </div>
       </div>
 
+      {/* Sticky Tab Navigation Bar - Sentinel for Sticky detection */}
+      <div ref={sentinelRef} className="sticky-tab-sentinel" />
+
       {/* Sticky Tab Navigation Bar - Direct child of profile-shell for full page sticky scrolling */}
-      <div className="profile-tabs-sticky-wrapper">
+      <div className={`profile-tabs-sticky-wrapper ${isSticky ? 'is-sticky' : ''}`}>
         <div className="profile-tabs-bar">
           <button
             className={`profile-tab-button ${activeTab === 'ALL' ? 'active' : ''}`}
