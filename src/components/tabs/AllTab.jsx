@@ -80,6 +80,29 @@ const ALL_POSTS = [
     isLiked: false,
   },
   {
+    id: 9,
+    year: 2026,
+    category: 'Web Development',
+    author: 'Carl Janus Bacolod',
+    avatar: '/profile_picture/profilepicture.jpg',
+    time: 'January 12, 2026 · 🌐',
+    caption: 'I’m happy to share the successful completion of our Capstone Project (Thesis), where I had the opportunity to serve as the **Project Manager** for a government client, University of Caloocan City (UCC).\n\nOur team developed a comprehensive **GOVERNMENT MANAGEMENT SYSTEM IN EDUCATION & SCHOLARSHIP WITH AI-POWERED VIRTUAL ASSISTANCE FOR APPLICATION SUPPORT BY DIALOGFLOW** designed to streamline and modernize the scholarship application and management process.',
+    images: [
+      '/projects_picture/ucc1.jpeg',
+      '/projects_picture/ucc4.jpg',
+      '/projects_picture/ucc2.jpg',
+    ],
+    tags: ['webdevelopment', 'capstone', 'thesis', 'projectmanagement', 'projectmanager'],
+    likes: 195,
+    comments: [
+      { id: 101, author: 'Carl Janus Bacolod', avatar: '/profile_picture/profilepicture.jpg', text: '📊 Data Analytics for better decision-making and insights', time: '1h ago' },
+      { id: 102, author: 'Carl Janus Bacolod', avatar: '/profile_picture/profilepicture.jpg', text: '🤖 AI Automation to improve efficiency and reduce manual processes', time: '1h ago' },
+      { id: 103, author: 'Carl Janus Bacolod', avatar: '/profile_picture/profilepicture.jpg', text: 'A successful capstone project and a meaningful milestone in our journey! 🚀', time: '1h ago' }
+    ],
+    shares: 18,
+    isLiked: false,
+  },
+  {
     id: 1,
     year: 2026,
     category: 'Hardware & Software',
@@ -94,7 +117,7 @@ const ALL_POSTS = [
     tags: ['Hardware', 'repair', 'laptops', 'keyboard', 'IT Specialization'],
     likes: 142,
     comments: [
-      { id: 101, author: 'Carl Janus Bacolod', avatar: '/profile_picture/profilepicture.jpg', text: 'Laptop motherboard repair!!', time: '1h ago' },
+      { id: 104, author: 'Carl Janus Bacolod', avatar: '/profile_picture/profilepicture.jpg', text: 'Laptop motherboard repair!!', time: '1h ago' },
       { id: 102, author: 'Carl Janus Bacolod', avatar: '/profile_picture/profilepicture.jpg', text: 'Laptop repair & Cleaning!!', time: '45m ago' }
     ],
     shares: 12,
@@ -181,7 +204,7 @@ const ALL_POSTS = [
     isLiked: false,
   },
 
-  
+
 ];
 
 // Helper function to extract array of images from a post (handles image: [], images: [], image: '', images: '')
@@ -458,18 +481,18 @@ export default function AllTab() {
 
             {/* Reaction Stats */}
             <div className="fb-post-stats">
-              <div className="reactions-count">
+              {/* <div className="reactions-count">
                 <div className="reaction-icon-circle">
                   <ThumbsUp size={12} fill="#14213D" />
                 </div>
                 <span>{post.likes} reactions</span>
-              </div>
+              </div> */}
               <div>
-                <span>{commentCount} comments • {post.shares} shares</span>
+                <span>{/*{commentCount} comments • {post.shares} shares*/}</span>
               </div>
             </div>
 
-            {/* Interactive Footer Actions */}
+            {/* Interactive Footer Actions
             <div className="fb-post-footer-actions">
               <button
                 className={`btn-post-interact ${post.isLiked ? 'liked' : ''}`}
@@ -488,7 +511,7 @@ export default function AllTab() {
                 <Share2 size={18} />
                 <span>Share</span>
               </button>
-            </div>
+            </div> */}
           </div>
         );
       })}
@@ -539,7 +562,7 @@ export default function AllTab() {
                     )}
                   </div>
 
-                  {/* Reactions Stats */}
+                  {/* Reactions Stats
                   <div className="fb-post-stats" style={{ borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0', padding: '10px 0', marginBottom: '8px' }}>
                     <div className="reactions-count">
                       <div className="reaction-icon-circle">
@@ -550,9 +573,9 @@ export default function AllTab() {
                     <div>
                       <span>{comments.length} comments • {post.shares} shares</span>
                     </div>
-                  </div>
+                  </div> */}
 
-                  {/* Action Buttons Bar */}
+                  {/* Action Buttons Bar
                   <div className="fb-post-footer-actions" style={{ borderBottom: '1px solid #e2e8f0', marginBottom: '16px', paddingBottom: '8px' }}>
                     <button
                       className={`btn-post-interact ${post.isLiked ? 'liked' : ''}`}
@@ -569,7 +592,7 @@ export default function AllTab() {
                       <Share2 size={18} />
                       <span>Share</span>
                     </button>
-                  </div>
+                  </div> */}
 
                   {/* Comments Section */}
                   <div className="text-modal-comments-area">
@@ -580,7 +603,7 @@ export default function AllTab() {
                       <div className="viewer-empty-comments" style={{ padding: '24px 0', background: 'none' }}>
                         <FileText size={36} style={{ opacity: 0.3, marginBottom: '8px', color: '#14213D' }} />
                         <p className="no-comments-title" style={{ fontSize: '14px', color: '#14213D' }}>No comments yet</p>
-                        <p className="no-comments-sub" style={{ fontSize: '12px', color: '#64748b' }}>Be the first to comment on this post.</p>
+                        <p className="no-comments-sub" style={{ fontSize: '12px', color: '#64748b' }}>The Author has not commented yet.</p>
                       </div>
                     ) : (
                       comments.map(c => {
@@ -724,7 +747,7 @@ export default function AllTab() {
                 </div>
               )}
 
-              {/* Stats Row */}
+              {/* Stats Row
               <div className="viewer-stats-row">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <div className="viewer-reaction-bubble">
@@ -735,10 +758,10 @@ export default function AllTab() {
                 <div>
                   <span>{comments.length} comments • {post.shares} shares</span>
                 </div>
-              </div>
+              </div> 
 
               {/* Action Buttons */}
-              <div className="viewer-action-bar">
+              {/* <div className="viewer-action-bar">
                 <button
                   className={`btn-viewer-action ${post.isLiked ? 'liked' : ''}`}
                   onClick={() => toggleLike(post.id)}
@@ -754,7 +777,7 @@ export default function AllTab() {
                   <Share2 size={16} />
                   <span>Share</span>
                 </button>
-              </div>
+              </div>  */}
 
               {/* Comments Scrollable Area */}
               <div className="viewer-comments-body">
@@ -762,7 +785,7 @@ export default function AllTab() {
                   <div className="viewer-empty-comments">
                     <FileText size={40} style={{ opacity: 0.2, marginBottom: '10px' }} />
                     <p className="no-comments-title">No comments yet</p>
-                    <p className="no-comments-sub">Be the first to comment.</p>
+                    <p className="no-comments-sub"> The Author has not commented yet.</p>
                   </div>
                 ) : (
                   comments.map(c => {
